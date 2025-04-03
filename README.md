@@ -1,5 +1,11 @@
 # Sample für Clean Architecture mit GraphQl und JPA.
 
+## Beispiel
+
+Wir laden eine Liste von User-Objekten. Jeder User hat eine Liste von beliebig vielen Posts, die wir per GraphQl anfordern können (oder eben auch nicht).
+
+Es stellt sich die Frage, wie wir mit den Datenbankzugriffen vorgehen, wenn wir darauf eingestellt sein wollen, dass der Join zwischen beiden Tabellen mal erforderlich ist, und mal nicht.
+
 ## Lösungsansätze
 
 > [!NOTE]
