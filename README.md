@@ -5,13 +5,12 @@
 > [!NOTE]
 > **DRAFT:** Diese Notizen sind lediglich erste Gedankengänge.
 
-- only GraphQL
+- Only GraphQL (Domain rein fachlich und unabhängig von Anforderungen der Boundary)
     - Domain lädt alle Objektgraphen, Boundary serialisiert nicht alles --> DB - Overfetching
-    - @SchemaMapping in Boundary (lazy), Auflösung der Referenzen in der Boundary, Domain stellt Nachladefunktionen (
-      getPostsByAuthor) zur Verfügung
-        - n+1 DB-Zugriffe für n Datensätze
-        - alternativ: getPostsByAuthors (Bulk-Laden in Domain)
-    - Weiterreichen der Anforderungen über die Domain bis in die Persistence, Aufbau eines EntityGraphs
+- `@SchemaMapping` in Boundary (lazy loading), Auflösung der Referenzen in der Boundary, Domain stellt Nachladefunktion zur Verfügung
+    - pro User der Liste: `getPostsByUser(long id)` -> n+1 DB-Zugriffe für n Datensätze
+    - Bulk-Operation: `getPostsByUsers(long[] id)` -> 1+1 DB-Zugriffe für n Datensätze
+- Weiterreichen der Anforderungen über die Domain bis in die Persistence, Aufbau eines EntityGraphs
 
 > [!NOTE]
 > In diesem Repository wurde die letzte Variante umgesetzt:
